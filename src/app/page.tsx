@@ -1,3 +1,9 @@
+import Button from "../shared/ui/button/ActionButton";
+
 export default function MainPage() {
-  return <h1>hi</h1>;
+  return (
+    <>
+      <Button>Button</Button>
+    </>
+  );
 }
