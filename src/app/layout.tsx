@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "@/shared/styles/global.css";
+import "@/src/shared/styles/global.css";
 
 export const metadata: Metadata = {
   title: "PROX",
