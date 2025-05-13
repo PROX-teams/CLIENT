@@ -42,8 +42,3 @@ globalStyle("button, input, select, textarea", {
   background: "transparent",
   border: "none",
 });
-
-globalStyle("button:focus, input:focus, select:focus, textarea:focus", {
-  background: "transparent",
-  border: "none",
-});

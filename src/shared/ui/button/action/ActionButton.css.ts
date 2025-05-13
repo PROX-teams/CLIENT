@@ -1,13 +1,13 @@
 import { style, styleVariants } from "@vanilla-extract/css";
 import { vars } from "@/shared/styles/theme.css";
+import { recipe } from "@vanilla-extract/recipes";
 
-export const baseStyle = style({
+export const base = style({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   height: "38px",
   borderRadius: "7px",
-  cursor: "pointer",
 });
 
 export const variantStyle = styleVariants({
@@ -36,4 +36,23 @@ export const buttonSizeStyle = styleVariants({
 
 export const dangerStyle = style({
   color: "#D93A32",
+});
+
+export const actionButtonStyle = recipe({
+  base,
+  variants: {
+    variant: {
+      filled: variantStyle.filled,
+      outlined: variantStyle.outlined,
+    },
+    size: {
+      small: buttonSizeStyle.small,
+      medium: buttonSizeStyle.medium,
+      large: buttonSizeStyle.large,
+    },
+    danger: {
+      true: dangerStyle,
+      false: "",
+    },
+  },
 });
