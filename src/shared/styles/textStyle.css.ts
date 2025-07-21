@@ -1,0 +1,143 @@
+import { styleVariants } from "@vanilla-extract/css";
+import { font } from "./fonts.css";
+
+export const tx = styleVariants({
+  h1_sb: {
+    fontSize: font.size.h1,
+    fontWeight: font.weight.sb,
+    lineHeight: font.lineHeight.base130,
+    letterSpacing: font.letterSpacing.base,
+  },
+  h2_sb: {
+    fontSize: font.size.h2,
+    fontWeight: font.weight.sb,
+    lineHeight: font.lineHeight.base140,
+    letterSpacing: font.letterSpacing.base,
+  },
+  h3_sb: {
+    fontSize: font.size.h3,
+    fontWeight: font.weight.sb,
+    lineHeight: font.lineHeight.base130,
+    letterSpacing: font.letterSpacing.base,
+  },
+  h4_sb: {
+    fontSize: font.size.h4,
+    fontWeight: font.weight.sb,
+    lineHeight: font.lineHeight.base130,
+    letterSpacing: font.letterSpacing.base,
+  },
+  h5_sb: {
+    fontSize: font.size.h5,
+    fontWeight: font.weight.sb,
+    lineHeight: font.lineHeight.base130,
+    letterSpacing: font.letterSpacing.base,
+  },
+  h5_md: {
+    fontSize: font.size.h5,
+    fontWeight: font.weight.md,
+    lineHeight: font.lineHeight.base130,
+    letterSpacing: font.letterSpacing.base,
+  },
+  t1_md: {
+    fontSize: font.size.t1,
+    fontWeight: font.weight.md,
+    lineHeight: font.lineHeight.base130,
+    letterSpacing: font.letterSpacing.base,
+  },
+  t1_rg: {
+    fontSize: font.size.t1,
+    fontWeight: font.weight.rg,
+    lineHeight: font.lineHeight.base130,
+    letterSpacing: font.letterSpacing.base,
+  },
+  t2_sb: {
+    fontSize: font.size.t2,
+    fontWeight: font.weight.sb,
+    lineHeight: font.lineHeight.base130,
+    letterSpacing: font.letterSpacing.base,
+  },
+  t2_md: {
+    fontSize: font.size.t2,
+    fontWeight: font.weight.md,
+    lineHeight: font.lineHeight.base130,
+    letterSpacing: font.letterSpacing.base,
+  },
+  t2_rg: {
+    fontSize: font.size.t2,
+    fontWeight: font.weight.rg,
+    lineHeight: font.lineHeight.base130,
+    letterSpacing: font.letterSpacing.base,
+  },
+  b1_rg: {
+    fontSize: font.size.b1,
+    fontWeight: font.weight.rg,
+    lineHeight: font.lineHeight.base160,
+    letterSpacing: font.letterSpacing.base,
+  },
+  b2_180_rg: {
+    fontSize: font.size.b2,
+    fontWeight: font.weight.rg,
+    lineHeight: font.lineHeight.base180,
+    letterSpacing: font.letterSpacing.base,
+  },
+  b2_160_rg: {
+    fontSize: font.size.b2,
+    fontWeight: font.weight.rg,
+    lineHeight: font.lineHeight.base160,
+    letterSpacing: font.letterSpacing.base,
+  },
+  b3_rg: {
+    fontSize: font.size.b3,
+    fontWeight: font.weight.rg,
+    lineHeight: font.lineHeight.base180,
+    letterSpacing: font.letterSpacing.base,
+  },
+  cap1_sb: {
+    fontSize: font.size.cap1,
+    fontWeight: font.weight.sb,
+    lineHeight: font.lineHeight.base130,
+    letterSpacing: font.letterSpacing.base,
+  },
+  cap1_md: {
+    fontSize: font.size.cap1,
+    fontWeight: font.weight.md,
+    lineHeight: font.lineHeight.base130,
+    letterSpacing: font.letterSpacing.base,
+  },
+  cap1_rg: {
+    fontSize: font.size.cap1,
+    fontWeight: font.weight.rg,
+    lineHeight: font.lineHeight.base130,
+    letterSpacing: font.letterSpacing.base,
+  },
+  m1_bd: {
+    fontSize: font.size.m1,
+    fontWeight: font.weight.bd,
+    lineHeight: font.lineHeight.base130,
+    letterSpacing: font.letterSpacing.base,
+  },
+  m2_sb: {
+    fontSize: font.size.m2,
+    fontWeight: font.weight.sb,
+    lineHeight: font.lineHeight.base130,
+    letterSpacing: font.letterSpacing.base,
+  },
+  m3_sb: {
+    fontSize: font.size.m3,
+    fontWeight: font.weight.sb,
+    lineHeight: font.lineHeight.base140,
+    letterSpacing: font.letterSpacing.base,
+  },
+  m4_sb: {
+    fontSize: font.size.m4,
+    fontWeight: font.weight.sb,
+    lineHeight: font.lineHeight.base130,
+    letterSpacing: font.letterSpacing.base,
+  },
+  m5_rg: {
+    fontSize: font.size.m5,
+    fontWeight: font.weight.rg,
+    lineHeight: font.lineHeight.base170,
+    letterSpacing: font.letterSpacing.base,
+  },
+});
