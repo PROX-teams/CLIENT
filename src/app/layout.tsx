@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "@/shared/styles/global.css";
-import { lightTheme } from "@/shared/styles/theme.css";
+import ThemeProvider from "@/shared/config/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "PROX",
@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={lightTheme}>{children}</body>
+      <ThemeProvider>{children}</ThemeProvider>
     </html>
   );
 }
