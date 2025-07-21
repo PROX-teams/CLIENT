@@ -4,11 +4,11 @@ import { VanillaExtractPlugin } from "@vanilla-extract/webpack-plugin";
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
-    "@storybook/addon-essentials",
     "@storybook/addon-onboarding",
     "@chromatic-com/storybook",
-    "@storybook/experimental-addon-test",
+    "@storybook/addon-vitest",
     "@storybook/addon-styling-webpack",
+    "@storybook/addon-docs"
   ],
   framework: {
     name: "@storybook/nextjs",
