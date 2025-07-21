@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
+import type { Meta, StoryObj } from "@storybook/nextjs";
+import { fn } from "storybook/test";
 import { SwitchToggle } from "./Switchtoggle";
 
 const meta = {
@@ -12,11 +12,11 @@ const meta = {
   argTypes: {
     isActive: {
       control: "boolean",
-      description: "필터 활성화 여부",
+      description: "스위치 토글 활성화 여부",
     },
     onToggle: {
       action: "clicked",
-      description: "필터 클릭 시 호출되는 함수",
+      description: "스위치 클릭 시 호출되는 함수",
     },
   },
   args: { isActive: false, onToggle: fn() },
@@ -31,7 +31,7 @@ export const Active: Story = {
   },
 };
 
-export const InActive: Story = {
+export const Inactive: Story = {
   args: {
     isActive: false,
   },

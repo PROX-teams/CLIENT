@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 
-const useSwitchToggle = (initialState = false) => {
+export const useToggle = (initialState = false) => {
   const [isActive, setIsActive] = useState<boolean>(initialState);
 
   const toggle = useCallback((prev: boolean) => {
@@ -9,5 +9,3 @@ const useSwitchToggle = (initialState = false) => {
 
   return { isActive, setIsActive, toggle };
 };
-
-export { useSwitchToggle };

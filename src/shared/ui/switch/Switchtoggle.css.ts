@@ -1,11 +1,11 @@
-import { vars } from "@/shared/styles/theme.css";
+import { lightTheme, vars } from "@/shared/styles/theme.css";
 import { style } from "@vanilla-extract/css";
 
 export const label = style({
   position: "relative",
   display: "inline-block",
-  width: "48px",
-  height: "24px",
+  width: "44px",
+  height: "22px",
 });
 
 export const input = style({
@@ -20,17 +20,26 @@ export const slider = style({
   inset: 0,
   width: "100%",
   height: "100%",
-  backgroundColor: "#EFF0F2",
+  backgroundColor: vars.color.gray_300,
   borderRadius: "1000px",
   transition: "all 0.4s ease-in-out",
   cursor: "pointer",
 
   selectors: {
+    // 활성화 시
     [`${input}:checked + &`]: {
-      backgroundColor: vars.color.primary,
+      backgroundColor: "#1F6FEB",
     },
     [`${input}:checked + &::before`]: {
-      transform: "translateX(24px)",
+      transform: "translateX(22px)",
+    },
+
+    // 라이트 모드
+    [`${lightTheme} &`]: {
+      backgroundColor: vars.color.gray_300,
+    },
+    [`${lightTheme} &::before`]: {
+      border: `0.5px solid ${vars.color.gray_200}`,
     },
   },
 
@@ -39,11 +48,11 @@ export const slider = style({
     position: "absolute",
     top: "2px",
     left: "2px",
-    width: "20px",
-    height: "20px",
-    border: `0.5px solid rgba(0,0,0,0.04)`,
+    width: "18px",
+    height: "18px",
+    border: `0.5px solid ${vars.color.gray_400}`,
     borderRadius: "50%",
-    backgroundColor: vars.color.white,
+    backgroundColor: "#fafafa",
     boxShadow: `
       0px 1px 6px rgba(0, 0, 0, 0.06),
       0px 2px 1px rgba(0, 0, 0, 0.04)
