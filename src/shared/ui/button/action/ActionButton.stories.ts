@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
+import type { Meta, StoryObj } from "@storybook/nextjs";
+import { fn } from "storybook/test";
 import ActionButton from "./ActionButton";
 
 const meta = {
@@ -10,15 +10,15 @@ const meta = {
   },
   tags: ["autodocs"],
   argTypes: {
-    children: { control: "text", description: "Button 내부 텍스트" },
     variant: { control: "select", description: "Button 스타일" },
     size: { control: "select", description: "Button 크기" },
     danger: {
       control: "boolean",
       description: "위험 동작(예: 삭제)에 대한 스타일 여부",
     },
+    children: { control: "text", description: "Button 내부 텍스트" },
   },
-  args: { onClick: fn() },
+  args: { variant: "filled", size: "medium", danger: false, onClick: fn() },
 } satisfies Meta<typeof ActionButton>;
 
 export default meta;

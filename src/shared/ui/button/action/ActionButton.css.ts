@@ -18,7 +18,7 @@ export const variantStyle = styleVariants({
     backgroundColor: vars.color.black,
   },
   outlined: {
-    border: `1px solid ${vars.color.stroke_200}`,
+    border: `1px solid ${vars.color.gray_300}`,
     color: vars.color.gray_700,
     backgroundColor: vars.color.white,
   },

@@ -10,7 +10,7 @@ export default function ThemeProvider({
   children: React.ReactNode;
 }>) {
   // 임시 다크 모드 상태 관리 (추후 전역 상태로 변경 예정)
-  const [theme] = useState<Theme>("light");
+  const [theme] = useState<Theme>("dark");
 
   return (
     <body className={theme === "dark" ? darkTheme : lightTheme}>
