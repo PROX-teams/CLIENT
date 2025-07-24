@@ -1,24 +1,30 @@
-import type { Config } from 'jest';
-import nextJest from 'next/jest';
+import nextJest from "next/jest.js";
 
 const createJestConfig = nextJest({
-  dir: './',
+  // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
+  dir: "./",
 });
 
-const config: Config = {
-  coverageProvider: 'v8',
-  testEnvironment: 'jest-environment-jsdom',
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
-  transformIgnorePatterns: ['/node_modules/', '^.+\\.module\\.(css|sass|scss)$'],
-  moduleNameMapper: {
-  '\\.css\\.ts$': '<rootDir>/__mocks__/styleMock.ts', 
-  '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
-  '^.+\\.(css|sass|scss)$': '<rootDir>/__mocks__/styleMock.ts',
-  '^.+\\.(png|jpg|jpeg|gif|webp|avif|ico|bmp|svg)$/i': '<rootDir>/__mocks__/fileMock.ts',
-  '^@/(.*)$': '<rootDir>/src/$1',
-  },
-
-  
+const customJestConfig = {
+  testEnvironment: "jsdom",
 };
 
-export default createJestConfig(config);
+export default async function config() {
+  const styleFileRegex = "^.+\\.(css|sass|scss)$";
+  const nextJestConfig = await createJestConfig(customJestConfig)();
+
+  delete nextJestConfig.moduleNameMapper?.[styleFileRegex];
+
+  return {
+    ...nextJestConfig,
+    setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+    moduleNameMapper: {
+      ...nextJestConfig.moduleNameMapper,
+      '^@/(.*)$': '<rootDir>/src/$1',
+    },
+    transform: {
+      "\\.css\\.ts$": "@vanilla-extract/jest-transform",
+      ...nextJestConfig.transform,
+    },
+  };
+}
