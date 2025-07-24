@@ -20,7 +20,7 @@ export const slider = style({
   inset: 0,
   width: "100%",
   height: "100%",
-  backgroundColor: vars.color.gray_300,
+  backgroundColor: vars.color.stroke_300,
   borderRadius: "1000px",
   transition: "all 0.4s ease-in-out",
   cursor: "pointer",
@@ -28,7 +28,7 @@ export const slider = style({
   selectors: {
     // 활성화 시
     [`${input}:checked + &`]: {
-      backgroundColor: "#1F6FEB",
+      backgroundColor: vars.color.stroke_typing,
     },
     [`${input}:checked + &::before`]: {
       transform: "translateX(22px)",
@@ -39,7 +39,7 @@ export const slider = style({
       backgroundColor: vars.color.gray_300,
     },
     [`${lightTheme} &::before`]: {
-      border: `0.5px solid ${vars.color.gray_200}`,
+      border: `0.5px solid ${vars.color.stroke_300}`,
     },
   },
 
