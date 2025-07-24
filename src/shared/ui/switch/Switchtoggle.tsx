@@ -1,5 +1,5 @@
 import { ChangeEvent } from "react";
-import * as styles from "./Switchtoggle.css";
+import * as S from "./Switchtoggle.css";
 
 interface SwitchToggleProps {
   isActive: boolean; // 현재 활성화 상태
@@ -27,7 +27,7 @@ interface SwitchToggleProps {
 function SwitchToggle({ isActive, onToggle }: SwitchToggleProps) {
   return (
     // label 클릭 시 내부 input 요소를 자동으로 포커싱하여 토글 (기능적 요소)
-    <label className={styles.label}>
+    <label className={S.label}>
       {/* 실제 체크박스 요소 (화면에서는 숨겨짐) */}
       <input
         type="checkbox"
@@ -35,10 +35,10 @@ function SwitchToggle({ isActive, onToggle }: SwitchToggleProps) {
         onChange={(e: ChangeEvent<HTMLInputElement>) =>
           onToggle(e.target.checked)
         }
-        className={styles.input}
+        className={S.input}
       />
       {/* 토글 스위치 배경 + knob 슬라이더 역할 (시각적 요소) */}
-      <span className={styles.slider} />
+      <span className={S.slider} />
     </label>
   );
 }
