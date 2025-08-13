@@ -1,58 +1,31 @@
-import { createContext, PropsWithChildren, ReactNode } from "react";
-import { useDropdown } from "@/shared/lib/actions/uesDropdown";
+'use client';
 
-import { DropdownBox } from "./DropdownBox";
-import { DropdownTrigger } from "./DropdownTrigger";
-import { DropdownOption } from "./DropdownOption";
-import { DropdownLabel } from "./DropdownLabel";
-import { DropdownIcon } from "./DropdownIcon";
+import { ComponentProps } from 'react';
+import { DropdownContextProvider } from '@/shared/model/dropdown/contexts/DropdownContextProvider';
+import DropdownWrapper from './DropdownWrapper';
+import { DropdownTrigger } from './DropdownTrigger';
+import { DropdownMenu } from './DropdownMenu';
+import { DropdownOption } from './DropdownOption';
+import { DropdownIcon } from './DropdownIcon';
+import { DropdownValue } from './DropdownValue';
 
-export type DropdownContextType = {
-  isBoxOpen: boolean;
-  toggleBoxOpen: () => void;
+type DropdownWrapperProps = ComponentProps<typeof DropdownWrapper>;
 
-  selectedId: number | null;
-  selectedOption: ReactNode | null;
-
-  selectOption: (id: number, label: ReactNode) => void; 
+const Root = ({ children, ...props }: DropdownWrapperProps) => {
+  return (
+    <DropdownContextProvider>
+      <DropdownWrapper {...props}>{children}</DropdownWrapper>
+    </DropdownContextProvider>
+  );
 };
 
-export const DropdownContext = createContext<DropdownContextType>({
-  isBoxOpen: false,
-  toggleBoxOpen: () => {},
-  selectedId: null,
-  selectedOption: null,
-  selectOption: () => {},
-});
+Root.displayName = 'Dropdown.Root';
 
-function Root({ children }: PropsWithChildren) {
-  const {
-    selectedOption,
-    selectedId,
-    selectOption,
-    isBoxOpen,
-    toggleBoxOpen,
-  } = useDropdown<number>();
-
-  return (
-    <DropdownContext.Provider
-      value={{
-        isBoxOpen,
-        toggleBoxOpen,
-        selectedOption,
-        selectedId,
-        selectOption,
-      }}
-    >
-      {children}
-    </DropdownContext.Provider>
-  );
-}
 
 export const Dropdown = Object.assign(Root, {
   Trigger: DropdownTrigger,
-  Box: DropdownBox,
+  Menu: DropdownMenu,
   Option: DropdownOption,
-  Label: DropdownLabel,
   Icon: DropdownIcon,
-});
+  Value: DropdownValue
+})

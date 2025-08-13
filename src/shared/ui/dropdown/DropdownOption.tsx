@@ -1,41 +1,42 @@
-import { ReactElement, cloneElement, PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 import { useContext } from "react";
-import { DropdownContext } from "./Dropdown";
+import clsx from "clsx";
+import { DropdownContext } from "@/shared/model/dropdown/contexts/DropdownContextProvider";
 import * as S from "./Dropdown.css";
 
-interface DropdownOptionProps {
-  asChild?: boolean;
-  optionId:number;
+interface DropdownOptionProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, "onClick"> {
+  optionId: number;
+  onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
+  className?: string;
 }
 
-function DropdownOption(props: PropsWithChildren<DropdownOptionProps>) {
-  const { asChild = false, children, ...restProps } = props;
+function DropdownOption({
+  optionId,
+  onClick,
+  className,
+  children,
+  ...props
+}: PropsWithChildren<DropdownOptionProps>) {
   const { selectedId, selectOption, toggleBoxOpen } = useContext(DropdownContext);
 
-  const isSelected = restProps.optionId === selectedId;
-  const baseClass = `${S.option} ${isSelected ? S.optionSelected : ""}`;
+  const isSelected = optionId === selectedId;
 
-  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
-    e.preventDefault();
-    selectOption(restProps.optionId, children);
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    selectOption(optionId, children);
     toggleBoxOpen();
+    onClick?.(e);
   };
 
-  if (asChild) {
-    return cloneElement(children as ReactElement<React.HTMLAttributes<HTMLElement>>, {
-      ...restProps,
-      onClick: handleClick,
-    });
-  }
-
-
-
   return (
-    <div className={baseClass} onClick={handleClick}>
+    <div
+      className={clsx(S.option, isSelected && S.optionSelected, className)}
+      onClick={handleClick}
+      {...props}
+    >
       {children}
     </div>
   );
-};
+}
 
-export {DropdownOption}
-
+export { DropdownOption };

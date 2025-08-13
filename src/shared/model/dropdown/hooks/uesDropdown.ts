@@ -17,7 +17,7 @@ export const useDropdown = <T>() => {
 
   return {
     selectedOption,
-    selectedId, // ✅ 추가
+    selectedId, 
     selectOption,
     isBoxOpen,
     toggleBoxOpen,

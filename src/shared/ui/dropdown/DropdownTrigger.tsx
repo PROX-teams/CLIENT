@@ -2,40 +2,54 @@ import {
   PropsWithChildren,
   ReactElement,
   cloneElement,
-  useContext
+  isValidElement,
 } from "react";
-import { DropdownContext } from "./Dropdown";
-import * as S from "./Dropdown.css"
-
+import { useContext } from "react";
+import clsx from "clsx";
+import { DropdownContext } from "@/shared/model/dropdown/contexts/DropdownContextProvider";
+import * as S from "./Dropdown.css";
 
 interface DropdownTriggerProps {
   className?: string;
   asChild?: boolean;
+  size?: "xs" | "sm" | "md" | "lg";
 }
 
-function DropdownTrigger(props : PropsWithChildren<DropdownTriggerProps>) {
-  const { asChild = false, children, ...restProps } = props;
-  const { selectedOption, toggleBoxOpen } = useContext(DropdownContext);
-  
+function DropdownTrigger({
+  asChild = false,
+  size = "md",
+  className,
+  children,
+  ...props
+}: PropsWithChildren<DropdownTriggerProps>) {
+  const { toggleBoxOpen } = useContext(DropdownContext);
 
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
-    e.preventDefault();
+    e.preventDefault?.();
     toggleBoxOpen();
   };
 
-    if (asChild) {
-    return cloneElement(children as ReactElement<React.HTMLAttributes<HTMLElement>>, {
-      ...restProps,
-      onClick: handleClick,
+  if (asChild && isValidElement(children)) {
+    const child = children as ReactElement<React.HTMLAttributes<HTMLElement>>;
+    const mergedOnClick = (e: React.MouseEvent<HTMLElement>) => {
+      child.props.onClick?.(e);
+      if (e.defaultPrevented) return;
+      handleClick(e);
+    };
+
+    return cloneElement(child, {
+      onClick: mergedOnClick,
+      className: clsx(child.props.className, className),
     });
   }
 
   return (
     <div
-      className={selectedOption ? `${S.triggerSelected}` : `${S.trigger}`}
+      className={clsx(S.trigger({ size }), className)}
       onClick={handleClick}
+      {...props}
     >
-      {selectedOption ?? children}
+      {children}
     </div>
   );
 }

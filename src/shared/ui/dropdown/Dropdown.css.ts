@@ -1,30 +1,53 @@
-import { style, styleVariants } from "@vanilla-extract/css";
+import { recipe } from "@vanilla-extract/recipes";
+import { style } from "@vanilla-extract/css";
 import { vars } from "@/shared/styles/theme.css";
+import { tx } from "@/shared/styles/textStyle.css";
 
-
-export const trigger = style({
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-  padding: "0.53rem 1rem", // 8.5px 8px
-  border: `0.1rem solid ${vars.color.stroke_200}`, // 1px
-  borderRadius: "0.38rem", // 6px
-  backgroundColor: vars.color.black,
-  cursor: "pointer",
-  minWidth: "10rem", // 160px
-  color: vars.color.gray_500,
+// 박스 자체에 대한 
+export const trigger = recipe({
+  base: [
+    tx.cap1_md, // 공통 텍스트 스타일 유지
+    {
+      display: "inline-flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      padding: "0.53rem 0.75rem",
+      borderRadius: "0.38rem", // 6px
+      backgroundColor: vars.color.black,
+      cursor: "pointer",
+      width: "100%",
+      color: vars.color.gray_500,
+    }
+  ],
+  variants: {
+    size: {
+      xs: { // 16px 높이, 보더 없음
+        height: "1rem",
+        border: "none",
+      },
+      sm: { // 26px
+        height: "1.625rem",
+        border: `0.0625rem solid ${vars.color.stroke_200}`,
+      },
+      md: { // 34px
+        height: "2.125rem",
+        border: `0.0625rem solid ${vars.color.stroke_200}`,
+      },
+      lg: { // 56px
+        height: "3.5rem",
+        border: `0.0625rem solid ${vars.color.stroke_200}`,
+      },
+    },
+  },
+  defaultVariants: { size: "md" },
 });
 
-export const triggerSelected = style([
-  trigger, // 기존 스타일을 상속
-  {
-    color: vars.color.white // 원하는 선택 시 색상으로 변경
-    // 예시: vars.color.main 이나 원하는 색으로!
-  },
-]);
+export const SelectedValue = style({
+  color: vars.color.white,
+  marginRight: "auto",
+})
 
-
-export const box = style({
+export const menu = style({
   marginTop: "0.40rem", // 8px
   border: `0.1rem solid ${vars.color.stroke_200}`,
   borderRadius: "0.38rem",
@@ -56,15 +79,8 @@ export const optionSelected = style({
 });
 
 
+export const Icon = style({
 
 
-export const labelVariants = styleVariants({
-  default: {
-    fontSize: "0.75rem",
-    color: vars.color.gray_500,
-  },
-  selected: {
-    fontSize: "0.75rem",
-    color: vars.color.white,
-  },
-});
+
+})
