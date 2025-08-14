@@ -1,16 +1,15 @@
 import { ComponentProps } from "react";
+import clsx from "clsx";
 import { breadcrumbSeparatorStyle } from "./Breadcrumb.css";
+import SeparatorIcon from "@/shared/assets/icons/common/separator.svg";
 
 const BreadcrumbSeparator = ({
-  children,
+  children = <SeparatorIcon />,
   className,
   ...props
 }: ComponentProps<"span">) => (
-  <span
-    className={`${breadcrumbSeparatorStyle} ${className ?? ''}`.trim()}
-    {...props}
-  >
-    {children ?? ">"}
+  <span className={clsx(breadcrumbSeparatorStyle, className)} {...props}>
+    {children}
   </span>
 );
 
