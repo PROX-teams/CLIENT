@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
-import SignupButton from "./SignupButton";
+import LoginButton from "./LoginButton";
 
 const meta = {
-  title: "Button/Auth/Signup",
-  component: SignupButton,
+  title: "Button/Auth/Login",
+  component: LoginButton,
   parameters: {
     layout: "centered",
   },
@@ -12,23 +12,15 @@ const meta = {
     children: { control: "text", description: "버튼 내부에 표시할 콘텐츠" },
     variants: { control: "select", description: "스타일" },
     size: { control: "select", description: "크기" },
-    disabled: { control: "boolean", description: "비활성화 여부" },
   },
   args: {
-    children: "가입 완료",
+    children: "로그인",
     variants: "colored",
-    size: "lg",
-    disabled: false,
+    size: "sm",
   },
-} satisfies Meta<typeof SignupButton>;
+} satisfies Meta<typeof LoginButton>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
-
-export const Disabled: Story = {
-  args: {
-    disabled: true,
-  },
-};
