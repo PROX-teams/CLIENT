@@ -5,7 +5,7 @@ import NaverLogo from "@/shared/assets/logo/naver.svg";
 import KakaoLogo from "@/shared/assets/logo/kakao.svg";
 
 const meta = {
-  title: "Button/Signup/Social Login",
+  title: "Button/Auth/Social Login",
   component: SocialLoginButton,
   parameters: {
     layout: "centered",

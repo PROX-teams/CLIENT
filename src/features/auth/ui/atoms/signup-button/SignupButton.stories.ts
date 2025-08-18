@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs";
 import SignupButton from "./SignupButton";
 
 const meta = {
-  title: "Button/Signup",
+  title: "Button/Auth/Signup",
   component: SignupButton,
   parameters: {
     layout: "centered",

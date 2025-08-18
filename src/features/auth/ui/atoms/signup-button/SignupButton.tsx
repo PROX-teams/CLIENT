@@ -5,15 +5,13 @@ import { ButtonBase } from "@/shared/types/components.types";
 
 interface SignupButtonProps
   extends ButtonBase,
-    ButtonHTMLAttributes<HTMLButtonElement> {}
+    ButtonHTMLAttributes<HTMLButtonElement> {
+  /** 버튼 비활성화 여부 */
+  disabled?: boolean;
+}
 
 /**
- * 회원가입 완료 버튼 컴포넌트
- *
- * @param {"xs"|"sm"|"md"|"lg"} size - 버튼 크기
- * @param {"colored"|"neutral"|"danger"} variants - 버튼 스타일 종류
- * @param {boolean} disabled - 버튼 비활성화 여부
- * @param {ButtonHTMLAttributes<HTMLButtonElement>} props - HTML 버튼 속성들
+ * 회원가입 플로우의 마지막 단계에서 사용되는 '가입 완료' 버튼입니다.
  */
 
 export default function SignupButton({
