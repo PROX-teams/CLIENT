@@ -25,8 +25,7 @@ export default function SocialLoginButton({
   icon,
   ...props
 }: SocialLoginButtonProps) {
-  const childrenContent = Children.toArray(children);
-  const isGoogle = childrenContent.includes("Google로 시작하기");
+  const isGoogle = provider === "Google";
 
   return (
     <Button
