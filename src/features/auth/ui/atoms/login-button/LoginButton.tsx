@@ -2,9 +2,7 @@ import Button from "@/shared/ui/atoms/button/Button";
 import { ButtonHTMLAttributes } from "react";
 import { ButtonBase } from "@/shared/types/components.types";
 
-interface LoginButtonProps
-  extends ButtonBase,
-    ButtonHTMLAttributes<HTMLButtonElement> {}
+type LoginButtonProps = ButtonBase & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export default function LoginButton({
   size = "sm",

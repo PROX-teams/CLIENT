@@ -3,9 +3,7 @@ import * as S from "./SignupButton.css";
 import { ButtonHTMLAttributes } from "react";
 import { ButtonBase } from "@/shared/types/components.types";
 
-interface SignupButtonProps
-  extends ButtonBase,
-    ButtonHTMLAttributes<HTMLButtonElement> {}
+type SignupButtonProps = ButtonBase & ButtonHTMLAttributes<HTMLButtonElement>;
 
 /**
  * 회원가입 플로우의 마지막 단계에서 사용되는 '가입 완료' 버튼입니다.
