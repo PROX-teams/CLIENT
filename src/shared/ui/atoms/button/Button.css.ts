@@ -65,10 +65,10 @@ export const buttonStyle = recipe({
         },
       },
     },
+  },
 
-    defaultVariants: {
-      size: "md",
-      variants: "neutral",
-    },
+  defaultVariants: {
+    size: "md",
+    variants: "neutral",
   },
 });

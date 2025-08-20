@@ -18,7 +18,6 @@ export const signupButton = styleVariants({
       color: vars.color.gray_400,
       backgroundColor: vars.color.main_disabled,
       border: `1px solid ${vars.color.stroke_main_disabled}`,
-      cursor: "not-allowed",
       pointerEvents: "none", // 마우스 클릭 방지
       userSelect: "none",
     },
