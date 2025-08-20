@@ -21,7 +21,6 @@ interface ButtonProps
 export default function Button({
   size = "md",
   variants = "neutral",
-  disabled,
   children,
   ...props
 }: ButtonProps) {
