@@ -1,4 +1,3 @@
-import { tx } from "@/shared/styles/textStyle.css";
 import { lightTheme, vars } from "@/shared/styles/theme.css";
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";

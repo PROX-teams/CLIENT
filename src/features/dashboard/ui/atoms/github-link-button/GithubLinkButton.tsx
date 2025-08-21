@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Button from "@/shared/ui/atoms/button/Button";
 import { AnchorHTMLAttributes } from "react";
 import { ButtonBase } from "@/shared/types/components.types";
