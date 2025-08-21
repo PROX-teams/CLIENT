@@ -20,11 +20,11 @@ export const buttonBaseStyle = style({
 });
 
 export const buttonStyle = recipe({
-  base: [buttonBaseStyle, tx.t2_sb],
+  base: [buttonBaseStyle],
 
   variants: {
     size: {
-      xs: { width: 76, height: 24, borderRadius: 5 },
+      xs: { height: 24, borderRadius: 5 },
       sm: { width: 66, height: 28 },
       md: { height: 32 },
       lg: { height: 44 },
