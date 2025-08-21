@@ -1,41 +1,52 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Tag } from "./Tag";
+import TagIcon from "@/shared/assets/icons/common/tagIcon-test.svg"
+import Tag from "./Tag";
 
-const meta: Meta<typeof Tag> = {
+const meta = {
   title: "Components/Tag",
   component: Tag,
-  tags: ["autodocs"],
-  args: {
-    children: "태그",
+  parameters: {
+    layout: "centered",
   },
-};
+  tags: ["autodocs"],
+  argTypes: {
+    onRemove: {
+      description: "제거 버튼 클릭 시 호출되는 핸들러",
+    },
+    label: { control: "text" },
+    icon: { control: "text" },   
+    count: { control: "number"},   
+    className: { control: false },
+  },
+} satisfies Meta<typeof Tag>;
 
 export default meta;
-
 type Story = StoryObj<typeof Tag>;
 
 export const Default: Story = {
   args: {
-    children: "기본 태그",
+    label: "React",
   },
 };
 
-export const WithIcon: Story = {
+export const Icon: Story = {
   args: {
-    children: (
-      <>
-        <div>
-            {"아이콘"}
-        </div>
-        아이콘 있는 태그
-      </>
-    ),
+    label: "React",
+    icon: <TagIcon/>,
   },
 };
 
-export const WithLink: Story = {
+export const Count: Story = {
   args: {
-    children: "링크 태그",
-    href: "/example",
+    label: "JavaScript",
+    count: 42,
   },
 };
+
+export const Remove: Story = {
+  args: {
+    label: "Frontend",
+  },
+  render: (args) => <Tag {...args} onRemove={() => {}} />, 
+};
+
