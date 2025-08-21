@@ -10,7 +10,7 @@ interface SwitchToggleProps {
 
 /**
  * SwitchToggle 컴포넌트는 ON/OFF 상태를 토글할 수 있는 UI 스위치입니다.
- * @example
+ * ```jsx
  * const { isActive, toggle } = useToggle(false);
  *
  * return (
@@ -19,6 +19,7 @@ interface SwitchToggleProps {
  *     onToggle={(checked) => toggle(checked)}
  *   />
  * );
+ * ```
  */
 
 function SwitchToggle({ isActive, onToggle }: SwitchToggleProps) {
