@@ -42,6 +42,7 @@ export const buttonStyle = recipe({
           color: vars.color.gray_400,
           backgroundColor: vars.color.main_disabled,
           border: `1px solid ${vars.color.stroke_main_disabled}`,
+          cursor: "not-allowed",
         },
       },
       neutral: {
