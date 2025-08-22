@@ -1,5 +1,5 @@
 import { ChangeEvent } from "react";
-import * as S from "../ui/atoms/switch-toggle/SwitchToggle.css";
+import * as S from "./SwitchToggle.css";
 
 interface SwitchToggleProps {
   /** 현재 토글이 활성화(ON) 상태인지 여부 */
