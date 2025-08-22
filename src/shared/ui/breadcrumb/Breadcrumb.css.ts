@@ -3,10 +3,7 @@ import { tx } from "@/shared/styles/textStyle.css";
 import { style } from '@vanilla-extract/css';
 
 export const breadcrumbStyle = style({
-  display: 'flex',
-  alignItems: 'center',
-  backgroundColor: 'transparent',
-  
+  backgroundColor: 'transfer',
 });
 
 export const breadcrumbListStyle = style([
@@ -15,23 +12,16 @@ export const breadcrumbListStyle = style([
     display: 'flex',
     alignItems: 'center',
     gap: '10px',
-    margin: 0,
-    padding: 0,
   },
 ]);
 
-export const breadcrumbItemStyle = style([
-    tx.cap1_rg, 
-    {
-        display: 'flex',
-        alignItems: 'center',
-        color: vars.color.gray_400
-    },
-]);
-
-export const breadcrumbItemInactiveStyle = style({
+export const breadcrumbItemStyle = style({
   display: 'flex',
   alignItems: 'center',
+  color: vars.color.gray_400
+});
+
+export const breadcrumbItemInactiveStyle = style({
   textDecoration: 'none',
   color: vars.color.gray_700,
 });

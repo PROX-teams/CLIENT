@@ -2,7 +2,6 @@ import { forwardRef, ComponentPropsWithoutRef } from 'react';
 import { breadcrumbStyle } from './Breadcrumb.css';
 import BreadcrumbItem from './BreadcrumbItem';
 import BreadcrumbSeparator from './BreadcrumbSeparator';
-import BreadcrumbLink from './BreadcrumbLink';
 import BreadcrumbList from './BreadcrumList';
 import clsx from "clsx";
 
@@ -18,6 +17,5 @@ BreadcrumbRoot.displayName = "Breadcrumb"
 export const Breadcrumb = Object.assign(BreadcrumbRoot, {
   Item: BreadcrumbItem,
   Separator: BreadcrumbSeparator,
-  Link:BreadcrumbLink,
   List:BreadcrumbList
 });
