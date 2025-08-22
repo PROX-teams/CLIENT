@@ -22,7 +22,10 @@ interface SwitchToggleProps {
  * ```
  */
 
-function SwitchToggle({ isActive, onToggle }: SwitchToggleProps) {
+export default function SwitchToggle({
+  isActive,
+  onToggle,
+}: SwitchToggleProps) {
   return (
     // label 클릭 시 내부 input 요소를 자동으로 포커싱하여 토글 (기능적 요소)
     <label className={S.label}>
@@ -40,5 +43,3 @@ function SwitchToggle({ isActive, onToggle }: SwitchToggleProps) {
     </label>
   );
 }
-
-export { SwitchToggle };
