@@ -19,7 +19,7 @@ interface ArticleCardProps {
    * large -   305 X 304 / Thread Page
    * medium -  202 X 198 / Main Page
    * wide -    382 X 96 / Node Graph Page
-   * compact - 236 X 55 / Thread
+   * compact - 236 X 55 / Sidebar Bookmark
    */
   variant?: Variant;
 }
@@ -29,20 +29,19 @@ export default function ArticleCard({
   imageUrl,
   variant = "small",
 }: ArticleCardProps) {
+  const withImg = !!imageUrl;
+
   return (
     <Link href={`/notebook/${data.id}`}>
-      <div
-        className={clsx(
-          container({ variant, withImg: !!imageUrl }),
-          hoverContainer
-        )}
-      >
+      <div className={clsx(container({ variant }), hoverContainer)}>
         {/* 커버 이미지 */}
         {imageUrl && <CoverImage imageUrl={imageUrl} variant={variant} />}
 
-        <div className={contentContainer({ variant, withImg: !!imageUrl })}>
+        <div className={contentContainer({ variant, withImg })}>
           {/* 제목 */}
-          <strong className={titleStyle({ variant })}>{data.title}</strong>
+          <strong className={titleStyle({ variant, withImg })}>
+            {data.title}
+          </strong>
 
           {/* 메타 데이터 */}
           {variant === "large" && (
@@ -54,7 +53,7 @@ export default function ArticleCard({
           )}
 
           {/* 본문 */}
-          <div className={content({ variant, withImg: !!imageUrl })}>
+          <div className={content({ variant, withImg })}>
             {data.description}
           </div>
         </div>

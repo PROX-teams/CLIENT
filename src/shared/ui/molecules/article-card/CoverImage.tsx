@@ -16,6 +16,8 @@ export default function CoverImage({ imageUrl, variant }: CoverImageProps) {
         fill
         style={{ objectFit: "cover" }}
       />
+
+      {/* dimmed */}
       <div />
     </div>
   );

@@ -9,7 +9,7 @@ const base = style({
   backgroundColor: vars.color.gray_100,
   border: `1px solid ${vars.color.stroke_200}`,
   borderRadius: 6,
-  transition: "all 0.4s ease",
+  transition: "all 0.4s ease-in-out",
 
   ":hover": {
     backgroundColor: vars.color.gray_200,
@@ -20,43 +20,61 @@ const base = style({
     [`${lightTheme} &`]: {
       backgroundColor: vars.color.gray_100,
     },
+
+    [`${lightTheme} &:hover`]: {
+      backgroundColor: vars.color.gray_200,
+      border: `1px solid ${vars.color.stroke_300}`,
+    },
   },
 });
+const compactBase = style({
+  display: "flex",
+  flexDirection: "row-reverse",
+  gap: 8,
+  width: 232,
+  height: 55,
+  padding: "10px 8px",
+  borderRadius: 0,
+  backgroundColor: vars.color.black,
+  border: "none",
 
+  selectors: {
+    [`${lightTheme} &`]: {
+      backgroundColor: vars.color.white,
+    },
+  },
+});
 export const hoverContainer = style({});
 export const container = recipe({
-  base,
-
   variants: {
     variant: {
-      large: {
-        flexDirection: "column",
-        width: 305,
-        height: 304,
-      },
-      small: {
-        flexDirection: "column",
-        width: 202,
-        height: 198,
-      },
-      wide: {
-        flexDirection: "row-reverse",
-        width: 382,
-        height: 96,
-        padding: "18px",
-      },
-      compact: {
-        flexDirection: "row",
-        width: 236,
-        height: 55,
-        borderRadius: 0,
-        padding: "10px 18px",
-      },
-    },
-
-    withImg: {
-      true: {},
-      false: {},
+      large: [
+        base,
+        {
+          flexDirection: "column",
+          width: 305,
+          height: 304,
+        },
+      ],
+      small: [
+        base,
+        {
+          flexDirection: "column",
+          width: 202,
+          height: 198,
+        },
+      ],
+      wide: [
+        base,
+        {
+          flexDirection: "row-reverse",
+          gap: 11,
+          width: 382,
+          height: 96,
+          padding: "18px",
+        },
+      ],
+      compact: compactBase,
     },
   },
 });
@@ -67,8 +85,9 @@ const imgBase = style({
   overflow: "hidden",
   borderRadius: 6,
 });
+const imgCompactVariant = style({});
 globalStyle(`${imgBase} > div`, {
-  // dimmed
+  // 기본 (다크 모드) dimmed
   position: "absolute",
   top: 0,
   left: 0,
@@ -81,7 +100,14 @@ globalStyle(`${imgBase} > div`, {
 globalStyle(`${hoverContainer}:hover ${imgBase} > div`, {
   backgroundColor: "transparent",
 });
-
+globalStyle(`${lightTheme} ${imgBase} > div`, {
+  // 라이트모드에서는 dimmed 효과 X
+  backgroundColor: "transparent",
+});
+globalStyle(`${imgCompactVariant} > div`, {
+  // compact에서는 dimmed 효과 X
+  backgroundColor: "transparent",
+});
 export const imgWrapper = recipe({
   base: imgBase,
 
@@ -89,8 +115,11 @@ export const imgWrapper = recipe({
     variant: {
       large: { height: 143 },
       small: { minHeight: 73 },
-      wide: { height: 60 },
-      compact: { height: 32 },
+      wide: { minWidth: 111, height: 60 },
+      compact: [
+        { minWidth: 54, height: 32, borderRadius: 3 },
+        imgCompactVariant,
+      ],
     },
   },
 });
@@ -130,8 +159,15 @@ export const contentContainer = recipe({
         alignItems: "flex-start",
         gap: 10,
       },
-      wide: {},
-      compact: {},
+      wide: {
+        flexDirection: "column",
+        gap: 4,
+      },
+      compact: {
+        flexDirection: "column",
+        alignItems: "flex-start",
+        gap: 2,
+      },
     },
     withImg: {
       true: {},
@@ -140,7 +176,7 @@ export const contentContainer = recipe({
   },
 
   compoundVariants: [
-    // --- large variant cases ---
+    // --- large ---
     {
       variants: {
         variant: "large",
@@ -155,7 +191,7 @@ export const contentContainer = recipe({
       },
       style: { padding: "20px 18px 0 18px" },
     },
-    // --- small variant cases ---
+    // --- small ---
     {
       variants: {
         variant: "small",
@@ -169,6 +205,21 @@ export const contentContainer = recipe({
         withImg: false,
       },
       style: { padding: "16px 13px 0 13px" },
+    },
+    // --- compact ---
+    {
+      variants: {
+        variant: "compact",
+        withImg: true,
+      },
+      style: { width: 154 },
+    },
+    {
+      variants: {
+        variant: "compact",
+        withImg: false,
+      },
+      style: { width: 216 },
     },
   ],
 });
@@ -194,7 +245,7 @@ export const titleStyle = recipe({
 
   variants: {
     variant: {
-      large: [titleStyleBase, { width: 249, marginBottom: 7 }],
+      large: [titleStyleBase, tx.t1_md, { width: 249, marginBottom: 7 }],
       small: [
         titleStyleBase,
         {
@@ -205,10 +256,12 @@ export const titleStyle = recipe({
           whiteSpace: "normal",
         },
       ],
-      wide: [titleStyleBase, { width: 224 }],
+      wide: [titleStyleBase, {}],
       compact: [
         {
+          width: "100%",
           color: vars.color.gray_500,
+          transition: "all 0.4s ease-in-out",
 
           selectors: {
             [`${darkTheme} ${hoverContainer}:hover &`]: {
@@ -222,7 +275,30 @@ export const titleStyle = recipe({
         tx.cap1_sb,
       ],
     },
+
+    withImg: {
+      true: {},
+      false: {},
+    },
   },
+
+  compoundVariants: [
+    // --- wide ---
+    {
+      variants: {
+        variant: "wide",
+        withImg: true,
+      },
+      style: { width: 224 },
+    },
+    {
+      variants: {
+        variant: "wide",
+        withImg: false,
+      },
+      style: { width: 346 },
+    },
+  ],
 });
 
 export const content = recipe({
@@ -251,14 +327,22 @@ export const content = recipe({
         },
         tx.b3_rg,
       ],
-      wide: {},
-      compact: {},
+      wide: [{ WebkitLineClamp: 2 }, tx.cap1_rg],
+      compact: [
+        {
+          width: "100%",
+          whiteSpace: "nowrap",
+          WebkitLineClamp: 1,
+          color: vars.color.gray_400,
+        },
+        tx.cap3_rg,
+      ],
     },
     withImg: { true: {}, false: {} },
   },
 
   compoundVariants: [
-    // --- large variant cases ---
+    // --- large ---
     {
       variants: {
         variant: "large",
@@ -273,7 +357,7 @@ export const content = recipe({
       },
       style: { height: 92, WebkitLineClamp: 4 },
     },
-    // --- small variant cases ---
+    // --- small ---
     {
       variants: {
         variant: "small",
@@ -287,6 +371,21 @@ export const content = recipe({
         withImg: false,
       },
       style: { height: 66, WebkitLineClamp: 3 },
+    },
+    // --- wide ---
+    {
+      variants: {
+        variant: "wide",
+        withImg: true,
+      },
+      style: { width: 224 },
+    },
+    {
+      variants: {
+        variant: "wide",
+        withImg: false,
+      },
+      style: { width: 346 },
     },
   ],
 });
