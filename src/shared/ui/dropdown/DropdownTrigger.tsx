@@ -1,27 +1,27 @@
-import {
-  PropsWithChildren,
-  ReactElement,
-  cloneElement,
-  isValidElement,
-} from "react";
-import { useContext } from "react";
+import { HTMLAttributes,useContext } from "react";
 import clsx from "clsx";
 import { DropdownContext } from "@/shared/model/dropdown/contexts/DropdownContextProvider";
 import * as S from "./Dropdown.css";
 
-interface DropdownTriggerProps {
-  className?: string;
-  asChild?: boolean;
-  size?: "xs" | "sm" | "md" | "lg";
+
+type Layout = "rightLg" | "rightSm" | "left" | "flush"; // a1/a2/a3/a4 대응
+type Width  = "auto" | "w232" | "w332" | "w450" | "full";
+type Appearance = "solid" | "ghost";
+
+interface DropdownTriggerProps extends HTMLAttributes<HTMLDivElement> {
+  layout?: Layout;
+  width?: Width;
+  appearance?: Appearance;
 }
 
 function DropdownTrigger({
-  asChild = false,
-  size = "md",
+  layout,
+  width = "auto",
+  appearance = "solid",
   className,
   children,
   ...props
-}: PropsWithChildren<DropdownTriggerProps>) {
+}: DropdownTriggerProps) {
   const { toggleBoxOpen } = useContext(DropdownContext);
 
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
@@ -29,23 +29,12 @@ function DropdownTrigger({
     toggleBoxOpen();
   };
 
-  if (asChild && isValidElement(children)) {
-    const child = children as ReactElement<React.HTMLAttributes<HTMLElement>>;
-    const mergedOnClick = (e: React.MouseEvent<HTMLElement>) => {
-      child.props.onClick?.(e);
-      if (e.defaultPrevented) return;
-      handleClick(e);
-    };
-
-    return cloneElement(child, {
-      onClick: mergedOnClick,
-      className: clsx(child.props.className, className),
-    });
-  }
-
   return (
     <div
-      className={clsx(S.trigger({ size }), className)}
+      className={clsx(
+        S.trigger({ layout: layout, width, appearance }),
+        className
+      )}
       onClick={handleClick}
       {...props}
     >

@@ -1,6 +1,5 @@
 import { useContext, ReactNode } from "react";
 import { DropdownContext } from "@/shared/model/dropdown/contexts/DropdownContextProvider";
-import clsx from "clsx";
 import * as S from "./Dropdown.css";
 
 interface DropdownValueProps {
@@ -12,7 +11,7 @@ export const DropdownValue = ({ children }: DropdownValueProps) => {
 
   return (
     <div
-      className={clsx(selectedOption && S.SelectedValue)}
+      className={S.value({ selected: !!selectedOption })}
     >
       {children({ selectedOption })}
     </div>

@@ -1,13 +1,10 @@
 import { HTMLAttributes } from "react";
 import clsx from "clsx";
+import * as s from "./Dropdown.css"
 
-interface DropdownWrapperProps extends HTMLAttributes<HTMLDivElement> {
-  disableClickOutside?: boolean;
-}
-
-const DropdownWrapper = ({ children, className, ...props }: DropdownWrapperProps ) => {
+const DropdownWrapper = ({ children, className, ...props }: HTMLAttributes<HTMLDivElement> ) => {
   return (
-    <div className={clsx(className)} {...props}>
+    <div className={clsx(s.wrapper,className)} {...props}>
       {children}
     </div>
   );

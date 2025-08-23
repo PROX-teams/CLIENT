@@ -1,44 +1,30 @@
-import {
-  isValidElement,
-  cloneElement,
-  PropsWithChildren,
-} from "react";
-import { useContext } from "react";
+import { HTMLAttributes, useContext } from "react";
+import type { RecipeVariants } from "@vanilla-extract/recipes";
 import clsx from "clsx";
 import { DropdownContext } from "@/shared/model/dropdown/contexts/DropdownContextProvider";
 import * as S from "./Dropdown.css";
 
-interface DropdownBoxProps {
-  asChild?: boolean;
-  className?: string;
+type MenuVariant = RecipeVariants<typeof S.menu>;
+type Placement = NonNullable<MenuVariant>['placement'];
+
+interface DropdownMenuProps extends HTMLAttributes<HTMLDivElement> {
+  placement?: Placement;
   independent?: boolean;
 }
 
-type ChildWithClassName = {
-  className?: string;
-};
-
-function DropdownMenu({
+export default function DropdownMenu({
   children,
-  asChild = false,
   className,
   independent,
+  placement = "left",
   ...props
-}: PropsWithChildren<DropdownBoxProps>) {
-  const { isBoxOpen } = useContext(DropdownContext);
+}: DropdownMenuProps) {
 
+  const { isBoxOpen } = useContext(DropdownContext);
   const isOpen = independent ?? isBoxOpen;
 
-  if (asChild && isValidElement<ChildWithClassName>(children)) {
-    return isOpen
-      ? cloneElement(children, {
-          className: clsx(children.props.className, className),
-        })
-      : null;
-  }
-
   return isOpen ? (
-    <div className={clsx(S.menu, className)} {...props}>
+    <div className={clsx(S.menu({ placement }), className)} {...props}>
       {children}
     </div>
   ) : null;

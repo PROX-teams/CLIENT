@@ -11,21 +11,20 @@ import { DropdownValue } from './DropdownValue';
 
 type DropdownWrapperProps = ComponentProps<typeof DropdownWrapper>;
 
-const Root = ({ children, ...props }: DropdownWrapperProps) => {
+export default function DropdownRoot({ children, ...props }: DropdownWrapperProps) {
   return (
     <DropdownContextProvider>
       <DropdownWrapper {...props}>{children}</DropdownWrapper>
     </DropdownContextProvider>
   );
-};
+}
 
-Root.displayName = 'Dropdown.Root';
+DropdownRoot.displayName = 'Dropdown';
 
-
-export const Dropdown = Object.assign(Root, {
+export const Dropdown = Object.assign(DropdownRoot, {
   Trigger: DropdownTrigger,
   Menu: DropdownMenu,
   Option: DropdownOption,
   Icon: DropdownIcon,
-  Value: DropdownValue
-})
+  Value: DropdownValue,
+});
