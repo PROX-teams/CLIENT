@@ -41,31 +41,36 @@ export const Large: Story = {
   args: {
     data: data,
     variant: "large",
-    // @ts-ignore
-    imageUrl: true,
+    imageUrl: (true
+      ? "true"
+      : "false") as keyof typeof meta.argTypes.imageUrl.mapping,
   },
 };
+
 export const Small: Story = {
   args: {
     data: data,
     variant: "small",
-    // @ts-ignore
-    imageUrl: true,
+    imageUrl: (true
+      ? "true"
+      : "false") as keyof typeof meta.argTypes.imageUrl.mapping,
   },
 };
 export const Wide: Story = {
   args: {
     data: data,
     variant: "wide",
-    // @ts-ignore
-    imageUrl: true,
+    imageUrl: (true
+      ? "true"
+      : "false") as keyof typeof meta.argTypes.imageUrl.mapping,
   },
 };
 export const Compact: Story = {
   args: {
     data: data,
     variant: "compact",
-    // @ts-ignore
-    imageUrl: true,
+    imageUrl: (true
+      ? "true"
+      : "false") as keyof typeof meta.argTypes.imageUrl.mapping,
   },
 };
