@@ -17,7 +17,7 @@ interface ArticleCardProps {
   imageUrl?: string;
   /**
    * large -   305 X 304 / Thread Page
-   * medium -  202 X 198 / Main Page
+   * small -   202 X 198 / Main Page
    * wide -    382 X 96 / Node Graph Page
    * compact - 236 X 55 / Sidebar Bookmark
    */

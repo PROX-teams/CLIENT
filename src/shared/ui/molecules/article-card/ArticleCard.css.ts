@@ -86,7 +86,7 @@ const imgBase = style({
   borderRadius: 6,
 });
 const imgCompactVariant = style({});
-globalStyle(`${imgBase} > div`, {
+export const dimmedOverlay = style({
   // 기본 (다크 모드) dimmed
   position: "absolute",
   top: 0,
@@ -97,10 +97,10 @@ globalStyle(`${imgBase} > div`, {
   borderRadius: 6,
   transition: "background-color 0.4s ease",
 });
-globalStyle(`${hoverContainer}:hover ${imgBase} > div`, {
+globalStyle(`${hoverContainer}:hover ${dimmedOverlay}`, {
   backgroundColor: "transparent",
 });
-globalStyle(`${lightTheme} ${imgBase} > div`, {
+globalStyle(`${lightTheme} ${dimmedOverlay}`, {
   // 라이트모드에서는 dimmed 효과 X
   backgroundColor: "transparent",
 });

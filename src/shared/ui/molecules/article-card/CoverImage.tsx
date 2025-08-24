@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { imgWrapper } from "./ArticleCard.css";
+import { dimmedOverlay, imgWrapper } from "./ArticleCard.css";
 import { Variant } from "./ArticleCard";
 
 interface CoverImageProps {
@@ -18,7 +18,7 @@ export default function CoverImage({ imageUrl, variant }: CoverImageProps) {
       />
 
       {/* dimmed */}
-      <div />
+      <div className={dimmedOverlay} />
     </div>
   );
 }
