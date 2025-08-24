@@ -2,7 +2,7 @@ import { tx } from "@/shared/styles/textStyle.css";
 import { lightTheme, vars } from "@/shared/styles/theme.css";
 import { style } from "@vanilla-extract/css";
 
-export const buttonStyle = style([
+export const container = style([
   {
     display: "flex",
     alignItems: "center",
@@ -10,11 +10,15 @@ export const buttonStyle = style([
     width: "fit-content",
     height: 24,
     padding: "3.5px 9px 3.5px 7px",
+    border: `1px solid ${vars.color.stroke_300}`,
+    borderRadius: 5,
+    backgroundColor: vars.color.gray_200,
     color: vars.color.gray_500,
     transition: "all 0.4s ease",
 
     ":hover": {
       color: vars.color.white,
+      border: `1px solid ${vars.color.stroke_400}`,
     },
 
     selectors: {
@@ -33,15 +37,15 @@ export const buttonStyle = style([
   tx.cap1_md,
 ]);
 
-export const iconStyle = style({
+export const icon = style({
   color: vars.color.gray_500,
   transition: "all 0.4s ease",
 
   selectors: {
-    [`${buttonStyle}:hover &`]: {
+    [`${container}:hover &`]: {
       color: vars.color.white,
     },
-    [`${lightTheme} ${buttonStyle}:hover &`]: {
+    [`${lightTheme} ${container}:hover &`]: {
       color: vars.color.black,
     },
   },
