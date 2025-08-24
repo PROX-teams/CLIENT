@@ -3,11 +3,12 @@ import React from "react";
 import { Input } from "./Input";
 
 const meta = {
-  title: "Forms/Input",
+  title: "Input/Input",
   component: Input,
   parameters: {
     layout: "centered",
   },
+  tags: ["autodocs"],
   argTypes: {
     label: { control: "text" },
     type: {
@@ -16,11 +17,11 @@ const meta = {
     },
     size: {
       control: "radio",
-      options: ["sm", "md"],
+      options: ["sm", "md", "lg"],
     },
     placeholder: { control: "text" },
     errorMessage: {
-      control: "boolean",
+      control: "text",
       description: "true면 invalid 상태(border 색 등)로 표시",
     },
     className: { control: false },
@@ -29,8 +30,7 @@ const meta = {
     label: "라벨",
     placeholder: "내용을 입력해 주세요",
     type: "text",
-    size: "md",
-    errorMessage: false,
+    errorMessage: "에러메세지 입니다."
   },
 } satisfies Meta<typeof Input>;
 
@@ -39,40 +39,32 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 
-export const WithLabel: Story = {
+export const OnBoarding: Story = {
+  args: {
+    label: "계정",
+    size: "sm"
+  },
+};
+
+export const Profile: Story = {
   args: {
     label: "계정",
   },
 };
 
-export const WithoutLabel: Story = {
+export const Series: Story = {
   args: {
-    label: undefined,
+    label: "시리즈명",
+    size: "sm"
   },
 };
 
 export const Sizes: Story = {
   render: (args) => (
-    <div style={{ display: "grid", gap: 12, width: 360 }}>
+    <div style={{ display: "grid", gap: 12 }}>
       <Input {...args} size="sm" label="Small" />
       <Input {...args} size="md" label="Medium" />
+      <Input {...args} size="lg" label="Large" />
     </div>
   ),
-
-};
-
-export const Types: Story = {
-  render: (args) => (
-    <div style={{ display: "grid", gap: 12, width: 360 }}>
-      <Input {...args} type="text" label="크리에이터 명"/>
-      <Input {...args} type="email" label="계정"/>
-      <Input {...args} type="password" label="Password"/>
-    </div>
-  ),
-};
-
-export const InvalidState: Story = {
-  args: {
-    errorMessage: true,
-  },
 };
