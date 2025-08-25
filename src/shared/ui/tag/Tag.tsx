@@ -4,9 +4,9 @@ import * as s from "./Tag.css";
 import TagRemoveIcon from "@/shared/assets/icons/common/remove-tag.svg";
 
 export interface TagProps extends ComponentPropsWithoutRef<"div"> {
-  label: ReactNode;
+  label: string;
   icon?: ReactNode;
-  count?: ReactNode;
+  count?: number;
   onRemove?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
@@ -16,9 +16,9 @@ export interface TagProps extends ComponentPropsWithoutRef<"div"> {
  * 라벨(label), 아이콘(icon), 카운트(count) 표시가 가능하며,
  * 필요 시 제거 버튼(onRemove)도 지원합니다.
  *
- * @param {ReactNode} label - 태그에 표시할 텍스트 또는 노드 (필수)
+ * @param {string} label - 태그에 표시할 텍스트
  * @param {ReactNode} [icon] - 좌측에 표시할 아이콘
- * @param {ReactNode} [count] - 우측에 표시할 카운트
+ * @param {number} [count] - 우측에 표시할 카운트
  * @param {(e: React.MouseEvent<HTMLButtonElement>) => void} [onRemove] - 제거 버튼 클릭 시 호출되는 핸들러
  */
 

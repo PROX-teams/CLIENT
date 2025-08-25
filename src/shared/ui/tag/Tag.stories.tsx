@@ -3,10 +3,15 @@ import TagIcon from "@/shared/assets/icons/common/tagIcon-test.svg"
 import Tag from "./Tag";
 
 const meta = {
-  title: "Components/Tag",
+  title: "Tag/Tag",
   component: Tag,
   parameters: {
     layout: "centered",
+    docs: {
+      description: {
+        component: " ", 
+      },
+    },
   },
   tags: ["autodocs"],
   argTypes: {
@@ -14,7 +19,6 @@ const meta = {
       description: "제거 버튼 클릭 시 호출되는 핸들러",
     },
     label: { control: "text" },
-    icon: { control: "text" },   
     count: { control: "number"},   
     className: { control: false },
   },
