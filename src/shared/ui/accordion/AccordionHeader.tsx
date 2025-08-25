@@ -1,18 +1,25 @@
-import { useContext,PropsWithChildren } from "react";
-import { AccordionContext } from "./Accordion";
-import * as s from "@/shared/ui/accordion/Accordion.css";
+import { ComponentProps } from "react";
+import clsx from "clsx";
+import * as S from "@/shared/ui/accordion/Accordion.css";
 
-interface HeaderProps extends PropsWithChildren {
-  className?: string;
-}
+type AccordionHeaderProps = ComponentProps<"div"> & {
+  layout?: "inline" | "spread";
+};
 
-export const AccordionHeader = ({ children, className }: HeaderProps) => {
-  const { toggle } = useContext(AccordionContext);
-
+export const AccordionHeader = ({
+  className,
+  children,
+  layout = "inline",
+  ...props
+}: AccordionHeaderProps) => {
   return (
-    <div onClick={toggle} className={`${s.accordionHeader} ${className ?? ""}`}>
+    <div
+      className={clsx(S.header({ layout }), className)}
+      {...props}
+    >
       {children}
     </div>
   );
 };
 
+AccordionHeader.displayName = "AccordionHeader";

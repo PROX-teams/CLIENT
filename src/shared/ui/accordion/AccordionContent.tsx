@@ -2,8 +2,9 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useContext } from "react";
-import { AccordionContext } from "./Accordion";
-import * as s from "@/shared/ui/accordion/Accordion.css";
+import { AccordionContext } from "@/shared/model/accordion/contexts/AccordionContextProvider";
+import clsx from "clsx";
+import * as S from "@/shared/ui/accordion/Accordion.css";
 
 interface HeaderProps {
   children: React.ReactNode;
@@ -11,14 +12,14 @@ interface HeaderProps {
 }
 
 export const AccordionContent = ({ children, className }: HeaderProps) => {
-  const { visible } = useContext(AccordionContext);
+  const { isOpen } = useContext(AccordionContext);
 
   return (
     <AnimatePresence initial={false}>
-      {visible && (
+      {isOpen && (
         <motion.div
           key="accordion-content"
-          className={`${s.accordionContent} ${className ?? ""}`}
+          className={clsx(S.content, className)}
           initial={{ height: 0, opacity: 0 }}
           animate={{ height: "auto", opacity: 1 }}
           exit={{ height: 0, opacity: 0 }}
@@ -30,3 +31,5 @@ export const AccordionContent = ({ children, className }: HeaderProps) => {
     </AnimatePresence>
   );
 };
+
+
